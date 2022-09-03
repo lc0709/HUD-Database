@@ -1,5 +1,5 @@
 package net.doiche.database.DB
 
-import net.doiche.database.DatabasePlugin
+import net.doiche.database.DBMainPlugin
 
-internal lateinit var plugin: DatabasePlugin
+internal lateinit var plugin: DBMainPlugin

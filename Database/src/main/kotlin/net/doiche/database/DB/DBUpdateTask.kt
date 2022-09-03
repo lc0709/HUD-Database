@@ -1,4 +1,4 @@
-package net.doiche.database
+package net.doiche.database.DB
 
 class DBUpdateTask {
     fun saveDB(){

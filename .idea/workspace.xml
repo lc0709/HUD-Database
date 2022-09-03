@@ -4,34 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fad8851d-92c2-48e6-89eb-00be452e2649" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBTableInit.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBUserInit.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBUserListener.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBVariables.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DBUpdateTask.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DatabasePlugin.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Database/src/main/resources/plugin.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HUD/src/main/kotlin/net/doiche/hud/HUDPlugin.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HUD/src/main/resources/plugin.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/net/doiche/core/HUDDatabasePlugin.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+    <list default="true" id="fad8851d-92c2-48e6-89eb-00be452e2649" name="Changes" comment="initial commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBVariables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBVariables.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DBUpdateTask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBUpdateTask.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DatabasePlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DBMainPlugin.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,19 +60,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Project.color": "5d5751",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/Users/3doll/Downloads/HUD-Database/HUD/src/main/resources",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Project.color&quot;: &quot;5d5751&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/3doll/Downloads/HUD-Database/HUD/src/main/resources&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\3doll\Downloads\HUD-Database\HUD\src\main\resources" />
@@ -108,6 +85,7 @@
       <recent name="net.doiche.database" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="net.doiche.database.DB" />
       <recent name="net.doiche.database" />
     </key>
   </component>
@@ -120,6 +98,21 @@
       <option name="presentableId" value="Default" />
       <updated>1662191275515</updated>
     </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <created>1662197288230</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1662197288230</updated>
+    </task>
+    <task id="LOCAL-00002" summary="initial commit">
+      <created>1662197439258</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662197439258</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -132,5 +125,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
 </project>
