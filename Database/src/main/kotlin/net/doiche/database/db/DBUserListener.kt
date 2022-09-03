@@ -1,4 +1,4 @@
-package net.doiche.database.DB
+package net.doiche.database.db
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener

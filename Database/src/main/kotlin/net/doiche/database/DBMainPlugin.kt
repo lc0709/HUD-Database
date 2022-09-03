@@ -1,9 +1,9 @@
 package net.doiche.database
 
-import net.doiche.database.DB.DBTableInit
-import net.doiche.database.DB.DBUpdateTask
-import net.doiche.database.DB.DBUserListener
-import net.doiche.database.DB.plugin
+import net.doiche.database.db.DBTableInit
+import net.doiche.database.db.DBUpdateTask
+import net.doiche.database.db.DBUserListener
+import net.doiche.database.db.plugin
 import org.bukkit.plugin.java.JavaPlugin
 
 class DBMainPlugin: JavaPlugin() {

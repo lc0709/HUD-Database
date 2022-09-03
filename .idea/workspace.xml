@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fad8851d-92c2-48e6-89eb-00be452e2649" name="Changes" comment="initial commit">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBVariables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBVariables.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DBUpdateTask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBUpdateTask.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DatabasePlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DBMainPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBTableInit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBTableInit.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBUpdateTask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBUpdateTask.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBUserInit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBUserInit.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBUserListener.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBUserListener.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBVariables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBVariables.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DBMainPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DBMainPlugin.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +54,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
