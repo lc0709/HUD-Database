@@ -1,0 +1,4 @@
+name: HUD
+main: net.doiche.hud.HUDplugin
+version: 1.0.0
+api-version: 1.19

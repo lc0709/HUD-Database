@@ -1,0 +1,4 @@
+name: HUD-DatabasePlugin
+main: net.doiche.core.HUDDatabasePlugin
+version: 1.0.0
+api-version: 1.19
