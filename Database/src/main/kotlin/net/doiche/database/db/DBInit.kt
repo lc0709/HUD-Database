@@ -71,18 +71,19 @@ class DBInit {
     private fun load(player:Player): Boolean{
         try {
             connection.use {
-
+                it.prepareStatement("")
             }
         }catch(e:SQLException){
             plugin.logger.warning("Failed to loading player`s data!")
         }
         return true
     }
+
     private fun firstInit(player:Player) {
         try {
             //player table init
             connection.use {
-                it.prepareStatement("INSERT INTO player (uuid=?,name=?)").use { state ->
+                it.prepareStatement("INSERT INTO player (uuid,name) VALUES (?,?)").use { state ->
                     state.setString(1, player.uniqueId.toString())
                     state.setString(2, player.name)
                 }
@@ -90,7 +91,7 @@ class DBInit {
             //get id
             val id = DBManager().get("SELECT id FROM player", "id").toInt()
             connection.use {
-                it.prepareStatement("INSERT INTO hud (id=?,thirst=?,temperature=?,stamina=?)").use { state ->
+                it.prepareStatement("INSERT INTO hud (id,thirst,temperature,stamina) VALUES (?,?,?,?)").use { state ->
                     state.setString(1, id.toString())
                     state.setString(2, hud[id]?.thirst.toString())
                     state.setString(3, hud[id]?.temperature.toString())
