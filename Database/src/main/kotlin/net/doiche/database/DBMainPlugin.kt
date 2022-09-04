@@ -1,7 +1,7 @@
 package net.doiche.database
 
-import net.doiche.database.db.DBTableInit
-import net.doiche.database.db.DBUpdateTask
+import net.doiche.database.db.DBInit
+import net.doiche.database.db.DBManager
 import net.doiche.database.db.DBUserListener
 import net.doiche.database.db.plugin
 import org.bukkit.plugin.java.JavaPlugin
@@ -12,7 +12,7 @@ class DBMainPlugin: JavaPlugin() {
         server.logger.info("DB Plugin.")
 
         server.pluginManager.registerEvents(DBUserListener(),this)
-        DBTableInit().init()
-        DBUpdateTask().saveDB()
+        DBInit().serverInit()
+        DBManager().saveDB()
     }
 }

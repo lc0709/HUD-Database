@@ -4,15 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fad8851d-92c2-48e6-89eb-00be452e2649" name="Changes" comment="initial commit">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="fad8851d-92c2-48e6-89eb-00be452e2649" name="Changes" comment="database skeletons">
+      <change afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBInit.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HUD/src/main/kotlin/net/doiche/hud/HUD.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBTableInit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBTableInit.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBUpdateTask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBUpdateTask.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBUserInit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBUserInit.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBUserListener.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBUserListener.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DB/DBVariables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBVariables.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/Database/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DBMainPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/DBMainPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBTableInit.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBUpdateTask.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBUserInit.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBUserListener.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBUserListener.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBVariables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBVariables.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
