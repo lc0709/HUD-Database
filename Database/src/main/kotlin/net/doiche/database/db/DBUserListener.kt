@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package net.doiche.database.DB
+=======
+package net.doiche.database.db
+>>>>>>> origin/main
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener

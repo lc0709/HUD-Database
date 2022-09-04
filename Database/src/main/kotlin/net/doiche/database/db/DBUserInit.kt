@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 package net.doiche.database.DB
+=======
+package net.doiche.database.db
+
+import java.util.*
+import kotlin.collections.HashMap
+>>>>>>> origin/main
 
 class DBUserInit {
 
@@ -9,9 +16,21 @@ class DBUserInit {
         load()
     }
     private fun firstInit(){
+<<<<<<< HEAD
 
     }
     private fun load(){
 
+=======
+        //player table init
+        //get id
+        //hud table init
+    }
+    private fun load(){
+        //getPlayerData
+        //getHudData
+        //setPlayerData
+        //setHudData
+>>>>>>> origin/main
     }
 }
