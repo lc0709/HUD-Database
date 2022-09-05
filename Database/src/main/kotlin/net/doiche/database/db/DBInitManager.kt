@@ -2,6 +2,7 @@ package net.doiche.database.db
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
+import net.doiche.hud.hudMap
 import org.bukkit.entity.Player
 import java.sql.Connection
 import java.sql.SQLException
@@ -89,9 +90,9 @@ object DBInitManager {
                 it.prepareStatement("SELECT * FROM hud WHERE id=$id").use{state->
                     val set = state.resultSet
                     if (set.next()) {
-                        hud[id]?.thirst = set.getDouble("thirst")
-                        hud[id]?.stamina = set.getDouble("stamina")
-                        hud[id]?.temperature = set.getDouble("temperature")
+                        hudMap[id]?.thirst = set.getDouble("thirst")
+                        hudMap[id]?.stamina = set.getDouble("stamina")
+                        hudMap[id]?.temperature = set.getDouble("temperature")
                     }
                     else return false
                 }
