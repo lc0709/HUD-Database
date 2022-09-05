@@ -8,7 +8,6 @@ import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerToggleSprintEvent
-import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.PotionMeta
 import org.bukkit.potion.PotionType
 import java.util.*
@@ -27,21 +26,22 @@ class UserListener: Listener {
     @EventHandler
     fun onDrink(e: PlayerItemConsumeEvent) {
 
-        val id = userMap[e.player.uniqueId]
-        var thirst = hudMap[id]?.thirst //null 관련 수정필요
+        val id = userMap[e.player.uniqueId] ?: return
+        val hud = hudMap[id] ?: return
+        var thirst = hud.thirst //null 관련 수정필요
 
-        if(thirst!=null){
-            val item: ItemStack = e.player.activeItem
-            val data = (Objects.requireNonNull(item.itemMeta) as PotionMeta).basePotionData
+        val item = e.player.activeItem
+        val meta = (item.itemMeta as PotionMeta).basePotionData
 
-            when(data.type){
-                PotionType.WATER -> thirst += 6.0
-                PotionType.AWKWARD -> thirst = 0.0
-                else -> return
-            }; if(thirst>20) thirst=20.0
-
-            hudMap[id]?.thirst = thirst
+        when(meta.type){
+            PotionType.WATER -> thirst += 6.0
+            PotionType.AWKWARD -> thirst = 0.0
+            else -> return
         }
+        if(thirst > 20) thirst = 20.0
+
+        hud.thirst = thirst
+
     }
 
     @EventHandler
