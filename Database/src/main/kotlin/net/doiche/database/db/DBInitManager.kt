@@ -84,6 +84,7 @@ object DBInitManager {
                 it.prepareStatement("SELECT * FROM player WHERE uuid="+player.uniqueId).use{state->
                     val set = state.resultSet
                     if (set.next()) id = set.getInt("id")
+                    else return false
                 }
                 it.prepareStatement("SELECT * FROM hud WHERE id=$id").use{state->
                     val set = state.resultSet
@@ -92,11 +93,12 @@ object DBInitManager {
                         hud[id]?.stamina = set.getDouble("stamina")
                         hud[id]?.temperature = set.getDouble("temperature")
                     }
-
+                    else return false
                 }
             }
         }catch(e: Exception){
             plugin.logger.warning("Failed to loading player`s data!")
+            return false
         }
         return true
     }
