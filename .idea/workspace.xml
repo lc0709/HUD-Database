@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fad8851d-92c2-48e6-89eb-00be452e2649" name="Changes" comment="add HikariInit">
-      <change afterPath="$PROJECT_DIR$/Database/src/main/resources/config.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HUD/src/main/kotlin/net/doiche/hud/UserListener.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HUD/src/main/kotlin/net/doiche/hud/Variables.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HUD/src/main/kotlin/net/doiche/hud/coroutine/BukkitDispatcher.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HUD/src/main/kotlin/net/doiche/hud/coroutine/SchedulerCoroutine.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HUD/src/main/kotlin/net/doiche/hud/tasks/HUDManager.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBHikariInit.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBInit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBInit.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBUserListener.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBUserListener.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBVariables.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Database/src/main/kotlin/net/doiche/database/db/DBVariables.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HUD/src/main/kotlin/net/doiche/hud/HUD.kt" beforeDir="false" afterPath="$PROJECT_DIR$/HUD/src/main/kotlin/net/doiche/hud/HUD.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HUD/src/main/kotlin/net/doiche/hud/HUDPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/HUD/src/main/kotlin/net/doiche/hud/MainPlugin.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +49,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
@@ -74,19 +62,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Project.color": "5d5751",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/Users/82103/IdeaProjects/HUD-Database/HUD/src/main/kotlin/net/doiche/hud/coroutine",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Project.color&quot;: &quot;5d5751&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/82103/IdeaProjects/HUD-Database/HUD/src/main/kotlin/net/doiche/hud/coroutine&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\82103\IdeaProjects\HUD-Database\HUD\src\main\kotlin\net\doiche\hud\coroutine" />
@@ -120,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662203269837</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add HikariInit">
+      <created>1662374158109</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662374158109</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
