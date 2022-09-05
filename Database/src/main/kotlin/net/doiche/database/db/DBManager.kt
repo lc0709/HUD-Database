@@ -1,7 +1,5 @@
 package net.doiche.database.db
 
-import java.sql.SQLException
-
 class DBManager {
     fun saveDB(){
         savePlayerData()
@@ -12,19 +10,22 @@ class DBManager {
         loadHudData()
     }
     // "SELECT ? FROM ? WHERE ?=?"
-    fun get(queryString:String, get:String):String{
+    internal inline fun <reified T> get(queryString:String, get:String, returnDefault:Any? = null): T?{
         try {
-            connection.use {
+            DBInitManager.connection.use {
                 it.prepareStatement(queryString).use { state ->
                     val resultSet = state.resultSet
                     if (resultSet.next()) {
-                        return resultSet.getString(get)
-                    } else return "null"
+                        return resultSet.getObject(get, T::class.java)
+                    } else {
+                        plugin.logger.warning("No such value at query.")
+                        return returnDefault as T
+                    }
                 }
             }
-        }catch(e: SQLException){
+        }catch(e: Exception){
             plugin.logger.warning("Failed to getting value at query.")
-            return "null"
+            return null
         }
     }
 

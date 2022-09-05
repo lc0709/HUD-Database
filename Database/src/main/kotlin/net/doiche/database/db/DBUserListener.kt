@@ -7,6 +7,6 @@ import org.bukkit.event.player.PlayerJoinEvent
 class DBUserListener: Listener {
     @EventHandler
     fun onPlayerJoin(e: PlayerJoinEvent){
-        DBInit().playerDataInit(e.player)
+        DBInitManager.playerDataInit(e.player)
     }
 }

@@ -5,6 +5,5 @@ import net.doiche.hud.HUD
 import java.sql.Connection
 
 internal lateinit var plugin: DBMainPlugin
-internal lateinit var connection: Connection
 internal val hud = HashMap<Int, HUD>()
 
