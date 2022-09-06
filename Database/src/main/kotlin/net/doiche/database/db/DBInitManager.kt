@@ -2,7 +2,9 @@ package net.doiche.database.db
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
+import net.doiche.hud.HUD
 import net.doiche.hud.hudMap
+import net.doiche.hud.userMap
 import org.bukkit.entity.Player
 import java.sql.Connection
 import java.sql.SQLException
@@ -44,7 +46,7 @@ object DBInitManager {
             source = HikariDataSource(hikari)
             true
         } catch (e: Exception) {
-            plugin.logger.warning("HikariDataSource Setting failed.")
+            warn("HikariDataSource Setting failed.")
             false
         }
     }
@@ -73,7 +75,7 @@ object DBInitManager {
                 }
             }
         } catch (e: Exception) {
-            plugin.logger.warning("Table Creating Error.")
+            warn("Table Creating Error.")
         }
     }
 
@@ -81,24 +83,42 @@ object DBInitManager {
     private fun load(player:Player): Boolean{
         try {
             connection.use {
-                var id = -1
-                it.prepareStatement("SELECT * FROM player WHERE uuid="+player.uniqueId).use{state->
-                    val set = state.resultSet
-                    if (set.next()) id = set.getInt("id")
-                    else return false
-                }
-                it.prepareStatement("SELECT * FROM hud WHERE id=$id").use{state->
-                    val set = state.resultSet
-                    if (set.next()) {
-                        hudMap[id]?.thirst = set.getDouble("thirst")
-                        hudMap[id]?.stamina = set.getDouble("stamina")
-                        hudMap[id]?.temperature = set.getDouble("temperature")
+                val uuid = player.uniqueId
+                if(userMap.containsKey(uuid)){
+                    return true
+                }else{
+                    //load player table at DB
+                    var id:Int
+                    it.prepareStatement("SELECT * FROM player WHERE uuid="+player.uniqueId).use{state->
+                        val set = state.executeQuery()
+                        if (set.next()) {
+                            id = set.getInt("id")
+                        }
+                        else {
+                            warn("Failed to loading player table.")
+                            //TODO sth
+                            return true
+                        }
                     }
-                    else return false
+                    //load hud table at DB
+                    it.prepareStatement("SELECT * FROM hud WHERE id=$id").use { state ->
+                        val set = state.executeQuery()
+                        if (set.next()) {
+                            hudMap[id] = HUD(
+                                set.getDouble("thirst"),
+                                set.getDouble("stamina"),
+                                set.getDouble("temperature")
+                            )
+                        } else {
+                            warn("Failed to loading hud table.")
+                            //TODO sth
+                            return true
+                        }
+                    }
                 }
             }
         }catch(e: Exception){
-            plugin.logger.warning("Failed to loading player`s data!")
+            warn("Failed to loading player`s data!")
             return false
         }
         return true
@@ -115,7 +135,7 @@ object DBInitManager {
                 }
             }
             //get id
-            val id:Int = DBManager().get("SELECT id FROM player", "id") ?: return
+            val id:Int = DBManager.get("SELECT id FROM player", "id") ?: return
 
             connection.use {
                 it.prepareStatement("INSERT INTO hud (id,thirst,temperature,stamina) VALUES (?,?,?,?)").use { state ->
@@ -127,7 +147,7 @@ object DBInitManager {
                 }
             }
         } catch (e: Exception) {
-            plugin.logger.warning("Failed to initiating player data.")
+            warn("Failed to initiating player data.")
         }
     }
 }

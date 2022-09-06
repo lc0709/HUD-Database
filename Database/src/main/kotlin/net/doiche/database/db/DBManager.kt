@@ -1,13 +1,17 @@
 package net.doiche.database.db
 
-class DBManager {
+import net.doiche.hud.coroutine.SynchronizationContext
+import net.doiche.hud.coroutine.schedule
+
+object DBManager {
     fun saveDB(){
-        savePlayerData()
-        saveHudData()
-    }
-    fun loadDB(){
-        loadPlayerData()
-        loadHudData()
+        plugin.schedule(SynchronizationContext.ASYNC) {
+            while(true){
+                waitFor(12000L) // 10m
+                savePlayerData()
+                saveHudData()
+            }
+        }
     }
     // "SELECT ? FROM ? WHERE ?=?"
     internal inline fun <reified T> get(queryString:String, get:String, returnDefault:Any? = null): T?{
@@ -18,13 +22,13 @@ class DBManager {
                     if (resultSet.next()) {
                         return resultSet.getObject(get, T::class.java)
                     } else {
-                        plugin.logger.warning("No such value at query.")
+                        warn("No such value at query.")
                         return returnDefault as T
                     }
                 }
             }
         }catch(e: Exception){
-            plugin.logger.warning("Failed to getting value at query.")
+            warn("Failed to getting value at query.")
             return null
         }
     }
@@ -33,12 +37,6 @@ class DBManager {
 
     }
     private fun saveHudData(){
-
-    }
-    private fun loadPlayerData(){
-
-    }
-    private fun loadHudData(){
 
     }
 }
