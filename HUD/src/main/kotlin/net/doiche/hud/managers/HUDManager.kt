@@ -5,7 +5,6 @@ import net.doiche.hud.coroutine.SynchronizationContext
 import net.doiche.hud.coroutine.schedule
 import net.doiche.hud.plugin
 import org.bukkit.entity.Player
-import java.util.*
 import kotlin.collections.HashMap
 
 
@@ -27,7 +26,7 @@ object HUDManager {
         val temperature = hud.getTemperature()
 
 
-        plugin.schedule(SynchronizationContext.ASYNC){ //HUD 관리 시스템
+        plugin.schedule(SynchronizationContext.SYNC){ //HUD 관리 시스템
             var count = 0
             while (player.isOnline) {
 
@@ -51,8 +50,9 @@ object HUDManager {
                 if (count >= 40 && hud.getThirst() <= 0.0){ //갈증 ==0일 경우 2초마다 체력 2씩 담
                     player.health -= 2
                 }
-
-                player.sendActionBar(hud.getComponent(player.isSwimming,player.remainingAir))
+                //switchContext(SynchronizationContext.SYNC)
+                player.sendActionBar(hud.getComponent(player.isSwimming, player.remainingAir))
+                //switchContext(SynchronizationContext.ASYNC)
                 count += 3
                 waitFor(3)
             }

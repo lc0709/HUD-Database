@@ -14,4 +14,8 @@ class DBMainPlugin: JavaPlugin() {
         DBInitManager.serverInit()
         DBManager.updateDB()
     }
+
+    override fun onDisable() {
+        DBInitManager.unRegister()
+    }
 }

@@ -11,6 +11,7 @@ class DBUserListener: Listener {
     @EventHandler
     fun onPlayerJoin(e: PlayerJoinEvent){
         DBInitManager.playerDataInit(e.player)
+        HUDManager.runHUDTask(e.player)
     }
     @EventHandler
     fun onPlayerQuit(e: PlayerQuitEvent){
@@ -19,6 +20,6 @@ class DBUserListener: Listener {
     }
     @EventHandler
     fun onDataLoaded(e:DataLoadEvent){
-        HUDManager.runHUDTask(e.player)
+
     }
 }

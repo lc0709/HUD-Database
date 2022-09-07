@@ -5,14 +5,17 @@ import net.doiche.hud.coroutine.schedule
 import net.doiche.hud.managers.HUDManager
 import net.doiche.hud.managers.UserManager
 import org.bukkit.entity.Player
+import java.sql.PreparedStatement
 import kotlin.math.ceil
 
 object DBManager {
     fun updateDB(){
         plugin.schedule(SynchronizationContext.ASYNC) {
+            info("[update] sequence running")
             while(true){
                 waitFor(12000L) // 10m
                 saveHudData()
+                info("SAVING...")
             }
         }
     }
@@ -21,11 +24,12 @@ object DBManager {
         HUDManager.getHudMap().remove(id)
     }
     // "SELECT ? FROM ? WHERE ?=?"
-    internal inline fun <reified T> get(queryString:String, get:String, returnDefault:Any? = null): T?{
+    internal inline fun <reified T> get(queryString:String, get:String, returnDefault:Any? = null, editState: (PreparedStatement) -> Unit): T?{
         try {
             DBInitManager.connection.use {
                 it.prepareStatement(queryString).use { state ->
-                    val resultSet = state.resultSet
+                    editState(state)
+                    val resultSet = state.executeQuery()
                     if (resultSet.next()) {
                         return resultSet.getObject(get, T::class.java)
                     } else {
@@ -35,6 +39,7 @@ object DBManager {
                 }
             }
         }catch(e: Exception){
+            e.printStackTrace()
             warn("Failed to getting value at query.")
             return null
         }

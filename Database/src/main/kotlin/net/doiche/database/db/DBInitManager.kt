@@ -18,15 +18,18 @@ object DBInitManager {
     }catch(e: SQLException){
         throw e
     }
-
+    fun unRegister(){
+        source.close()
+    }
     //Enable
     fun serverInit(){
         if (hikariInit()) createTable()
+        plugin.server.pluginManager.callEvent(DataLoadEvent())
     }
     //Listener
     fun playerDataInit(player:Player){
         if (!load(player)) firstInit(player)
-        plugin.server.pluginManager.callEvent(DataLoadEvent(player))
+
     }
 
     private fun hikariInit(): Boolean{
@@ -46,9 +49,10 @@ object DBInitManager {
 
         return try {
             source = HikariDataSource(hikari)
+            info("[HIKARI] ON")
             true
         } catch (e: Exception) {
-            plugin.logger.warning("HikariDataSource Setting failed.")
+            warn("HikariDataSource Setting failed.")
             false
         }
     }
@@ -77,14 +81,21 @@ object DBInitManager {
                 }
             }
         } catch (e: Exception) {
-            plugin.logger.warning("Table Creating Error.")
+            warn("Table Creating Error.")
         }
     }
 
     private fun load(player:Player): Boolean{
+        var id: Int
+        id = DBManager.get<Int>("SELECT id FROM player WHERE uuid=?","id"){
+            it.setString(1, player.uniqueId.toString())
+        } ?: -1
         try {
+            if (id == -1) {
+                info("Hi There! I`ll initiating this noob...")
+                return false
+            }
             connection.use {
-                var id = -1
                 val uuid = player.uniqueId
                 it.prepareStatement(SELECT_ROW_FROM_PLAYER_WITH_UUID).use{state->
                     state.setString(1, uuid.toString())
@@ -93,7 +104,10 @@ object DBInitManager {
                         id = set.getInt("id")
                         UserManager.inputId(uuid,id)
                     }
-                    else return false
+                    else {
+                        warn("hud load err")
+                        return true
+                    }
                 }
                 it.prepareStatement(SELECT_ROW_FROM_HUD_WITH_ID).use{state->
                     state.setString(1, id.toString())
@@ -105,28 +119,36 @@ object DBInitManager {
                             set.getDouble("temperature")
                         ))
                     }
-                    else return false
+                    else {
+                        warn("hud load err.")
+                        return true
+                    }
                 }
             }
+            info("LOADED PLAYER")
         }catch(e: Exception){
-            plugin.logger.warning("Failed to loading player`s data!")
-            return false
+            e.printStackTrace()
+            warn("Failed to loading player`s data!")
+            return true
         }
         return true
     }
 
     private fun firstInit(player:Player) {
+        val uuid = player.uniqueId.toString()
         try {
             //player table init
             connection.use {
                 it.prepareStatement(INSERT_INTO_PLAYER_AT_UUID_AND_NAME).use { state ->
-                    state.setString(1, player.uniqueId.toString())
+                    state.setString(1, uuid)
                     state.setString(2, player.name)
                     state.execute()
                 }
             }
             //get id
-            val id:Int = DBManager.get("SELECT id FROM player", "id") ?: return
+            val id:Int = DBManager.get("SELECT id FROM player WHERE uuid=?", "id"){
+                it.setString(1,uuid)
+            } ?: return
 
             connection.use {
                 it.prepareStatement(INSERT_INTO_HUD_AT_VALUES).use { state ->
@@ -137,8 +159,10 @@ object DBInitManager {
                     state.execute()
                 }
             }
+            info("PLAYER INIT COMPLETED")
         } catch (e: Exception) {
-            plugin.logger.warning("Failed to initiating player data.")
+            e.printStackTrace()
+            warn("Failed to initiating player data.")
         }
     }
 }
