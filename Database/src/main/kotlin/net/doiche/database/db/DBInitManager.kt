@@ -11,7 +11,6 @@ import java.sql.SQLException
 
 object DBInitManager {
 
-
     lateinit var source: HikariDataSource
     val connection:Connection get() = try{
         source.connection
@@ -79,7 +78,6 @@ object DBInitManager {
             plugin.logger.warning("Table Creating Error.")
         }
     }
-
 
     private fun load(player:Player): Boolean{
         try {

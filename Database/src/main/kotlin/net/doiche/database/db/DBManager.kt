@@ -2,14 +2,15 @@ package net.doiche.database.db
 
 import net.doiche.hud.coroutine.SynchronizationContext
 import net.doiche.hud.coroutine.schedule
+import net.doiche.hud.hudMap
 import net.doiche.hud.userMap
+import kotlin.math.ceil
 
 object DBManager {
     fun saveDB(){
         plugin.schedule(SynchronizationContext.ASYNC) {
             while(true){
                 waitFor(12000L) // 10m
-                savePlayerData()
                 saveHudData()
             }
         }
@@ -34,36 +35,24 @@ object DBManager {
         }
     }
 
-    private fun savePlayerData(){
-        for(player in userMap){
-
-        }
-        try {
-            //player table init
-            DBInitManager.connection.use {
-                it.prepareStatement(INSERT_INTO_PLAYER_AT_UUID_AND_NAME).use { state ->
-                    state.setString(1, player.uniqueId.toString())
-                    state.setString(2, player.name)
-                    state.execute()
-                }
-            }
-            //get id
-            val id:Int = DBManager.get(SELECT_ROW_FROM_PLAYER_WITH_UUID, "id") ?: return
-
-            DBInitManager.connection.use {
-                it.prepareStatement(INSERT_INTO_HUD_AT_VALUES).use { state ->
-                    state.setInt(1, id)
-                    state.setInt(2, 20)
-                    state.setInt(3, 10)
-                    state.setInt(4, 20)
-                    state.execute()
-                }
-            }
-        } catch (e: Exception) {
-            plugin.logger.warning("Failed to initiating player data.")
-        }
-    }
     private fun saveHudData(){
-
+        for(player in userMap) {
+            val id = player.component2()
+            val hud = hudMap[id] ?: return
+            try {
+                //player table init
+                DBInitManager.connection.use {
+                    it.prepareStatement("UPDATE hud SET thirst=?,stamina=?,temperature=? WHERE id=?").use { state ->
+                        state.setInt(1, ceil(hud.thirst).toInt())
+                        state.setInt(2, ceil(hud.stamina).toInt())
+                        state.setInt(3, ceil(hud.temperature).toInt())
+                        state.setInt(4, id)
+                        state.execute()
+                    }
+                }
+            } catch (e: Exception) {
+                plugin.logger.warning("Failed to auto-saving player`s hud data.")
+            }
+        }
     }
 }

@@ -8,6 +8,5 @@ class DBUserListener: Listener {
     @EventHandler
     fun onPlayerJoin(e: PlayerJoinEvent){
         DBInitManager.playerDataInit(e.player)
-
     }
 }
