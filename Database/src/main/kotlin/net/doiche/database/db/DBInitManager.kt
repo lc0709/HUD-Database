@@ -11,6 +11,7 @@ import java.sql.SQLException
 
 object DBInitManager {
 
+
     lateinit var source: HikariDataSource
     val connection:Connection get() = try{
         source.connection
@@ -46,7 +47,7 @@ object DBInitManager {
             source = HikariDataSource(hikari)
             true
         } catch (e: Exception) {
-            warn("HikariDataSource Setting failed.")
+            plugin.logger.warning("HikariDataSource Setting failed.")
             false
         }
     }
@@ -75,7 +76,7 @@ object DBInitManager {
                 }
             }
         } catch (e: Exception) {
-            warn("Table Creating Error.")
+            plugin.logger.warning("Table Creating Error.")
         }
     }
 
@@ -83,42 +84,32 @@ object DBInitManager {
     private fun load(player:Player): Boolean{
         try {
             connection.use {
+                var id = -1
                 val uuid = player.uniqueId
-                if(userMap.containsKey(uuid)){
-                    return true
-                }else{
-                    //load player table at DB
-                    var id:Int
-                    it.prepareStatement("SELECT * FROM player WHERE uuid="+player.uniqueId).use{state->
-                        val set = state.executeQuery()
-                        if (set.next()) {
-                            id = set.getInt("id")
-                        }
-                        else {
-                            warn("Failed to loading player table.")
-                            //TODO sth
-                            return true
-                        }
+                it.prepareStatement(SELECT_ROW_FROM_PLAYER_WITH_UUID).use{state->
+                    state.setString(1, uuid.toString())
+                    val set = state.executeQuery()
+                    if (set.next()) {
+                        id = set.getInt("id")
+                        userMap[uuid] = id
                     }
-                    //load hud table at DB
-                    it.prepareStatement("SELECT * FROM hud WHERE id=$id").use { state ->
-                        val set = state.executeQuery()
-                        if (set.next()) {
-                            hudMap[id] = HUD(
-                                set.getDouble("thirst"),
-                                set.getDouble("stamina"),
-                                set.getDouble("temperature")
-                            )
-                        } else {
-                            warn("Failed to loading hud table.")
-                            //TODO sth
-                            return true
-                        }
+                    else return false
+                }
+                it.prepareStatement(SELECT_ROW_FROM_HUD_WITH_ID).use{state->
+                    state.setString(1, id.toString())
+                    val set = state.executeQuery()
+                    if (set.next()) {
+                        hudMap[id] = HUD(
+                            set.getDouble("thirst"),
+                            set.getDouble("stamina"),
+                            set.getDouble("temperature")
+                        )
                     }
+                    else return false
                 }
             }
         }catch(e: Exception){
-            warn("Failed to loading player`s data!")
+            plugin.logger.warning("Failed to loading player`s data!")
             return false
         }
         return true
@@ -128,7 +119,7 @@ object DBInitManager {
         try {
             //player table init
             connection.use {
-                it.prepareStatement("INSERT INTO player (uuid,name) VALUES (?,?)").use { state ->
+                it.prepareStatement(INSERT_INTO_PLAYER_AT_UUID_AND_NAME).use { state ->
                     state.setString(1, player.uniqueId.toString())
                     state.setString(2, player.name)
                     state.execute()
@@ -138,7 +129,7 @@ object DBInitManager {
             val id:Int = DBManager.get("SELECT id FROM player", "id") ?: return
 
             connection.use {
-                it.prepareStatement("INSERT INTO hud (id,thirst,temperature,stamina) VALUES (?,?,?,?)").use { state ->
+                it.prepareStatement(INSERT_INTO_HUD_AT_VALUES).use { state ->
                     state.setInt(1, id)
                     state.setInt(2, 20)
                     state.setInt(3, 10)
@@ -147,7 +138,7 @@ object DBInitManager {
                 }
             }
         } catch (e: Exception) {
-            warn("Failed to initiating player data.")
+            plugin.logger.warning("Failed to initiating player data.")
         }
     }
 }
