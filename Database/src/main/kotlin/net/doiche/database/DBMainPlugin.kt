@@ -12,6 +12,6 @@ class DBMainPlugin: JavaPlugin() {
 
         server.pluginManager.registerEvents(DBUserListener(),this)
         DBInitManager.serverInit()
-        DBManager.saveDB()
+        DBManager.updateDB()
     }
 }

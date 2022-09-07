@@ -3,6 +3,9 @@ package net.doiche.hud
 import net.kyori.adventure.text.Component
 import kotlin.math.ceil
 
+
+
+
 class HUD(
     private var thirst: Double,
     private var temperature: Double,

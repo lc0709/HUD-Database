@@ -1,6 +1,8 @@
 package net.doiche.hud
 
 import com.destroystokyo.paper.event.player.PlayerJumpEvent
+import net.doiche.hud.managers.DeathManager
+import net.doiche.hud.managers.PotionManager
 import net.doiche.hud.managers.HUDManager
 import net.doiche.hud.managers.UserManager
 import org.bukkit.event.EventHandler
@@ -9,8 +11,6 @@ import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerToggleSprintEvent
-import org.bukkit.inventory.meta.PotionMeta
-import org.bukkit.potion.PotionType
 
 class UserListener: Listener {
 
@@ -19,48 +19,27 @@ class UserListener: Listener {
         HUDManager.runHUDTask(e.player)
     }
 
-
-
-    /* 물약을 마시면 갈증 수치 6증가
-     * 어색한 물약을 마시면 갈증 수치 0으로 변화 */
     @EventHandler
     fun onDrink(e: PlayerItemConsumeEvent) {
-
-        val id = userMap[e.player.uniqueId] ?: return
-        val hud = hudMap[id] ?: return
-        var thirst = hud.thirst //null 관련 수정필요
-
-        val item = e.player.activeItem
-        val meta = (item.itemMeta as PotionMeta).basePotionData
-
-        when(meta.type){
-            PotionType.WATER -> thirst += 6.0
-            PotionType.AWKWARD -> thirst = 0.0
-            else -> return
-        }
-        if(thirst > 20) thirst = 20.0
-
-        hud.thirst = thirst
-
+        PotionManager.thirstFilling(e.player)
     }
 
     @EventHandler
-    fun onRun(e:PlayerToggleSprintEvent) {
-        // 시간 조정, 나중에 구현
+    fun onRun(e: PlayerToggleSprintEvent) {
+
+        val id = UserManager.getId(e.player.uniqueId) ?: return
+        UserManager.setExercising(id, true)
     }
 
     @EventHandler
-    fun onJump(e:PlayerJumpEvent){
-        // 시간 조정, 나중에 구현
+    fun onJump(e: PlayerJumpEvent) {
+
+        val id = UserManager.getId(e.player.uniqueId) ?: return
+        UserManager.setExercising(id, true)
     }
 
     @EventHandler
-    fun onDeath(e:PlayerDeathEvent){
-
-        val id = userMap[e.player.uniqueId]
-
-        hudMap[id]?.thirst = 20.0
+    fun onDeath(e: PlayerDeathEvent) {
+        DeathManager.resetThirst(e.player)
     }
-
-
 }

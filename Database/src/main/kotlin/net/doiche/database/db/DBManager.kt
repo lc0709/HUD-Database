@@ -43,7 +43,7 @@ object DBManager {
    fun saveHudData(){
         for(player in UserManager.getUserMap()) {
             val id = player.component2()
-            val hud = HUDManager.getHud(id) ?: return
+            val hud = HUDManager.getHUD(id) ?: return
             try {
                 //player table init
                 DBInitManager.connection.use {
