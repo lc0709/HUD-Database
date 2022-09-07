@@ -8,7 +8,7 @@ import org.bukkit.entity.Player
 import kotlin.math.ceil
 
 object DBManager {
-    fun saveDB(){
+    fun updateDB(){
         plugin.schedule(SynchronizationContext.ASYNC) {
             while(true){
                 waitFor(12000L) // 10m
@@ -40,7 +40,7 @@ object DBManager {
         }
     }
 
-    private fun saveHudData(){
+   fun saveHudData(){
         for(player in UserManager.getUserMap()) {
             val id = player.component2()
             val hud = HUDManager.getHud(id) ?: return

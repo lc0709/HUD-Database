@@ -14,6 +14,7 @@ class DBUserListener: Listener {
     }
     @EventHandler
     fun onPlayerQuit(e: PlayerQuitEvent){
+        DBManager.saveHudData()
         DBManager.playerDataRemove(e.player)
     }
     @EventHandler

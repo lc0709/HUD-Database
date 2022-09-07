@@ -6,17 +6,15 @@ import org.bukkit.event.HandlerList
 import org.bukkit.event.player.PlayerEvent
 
 class DataLoadEvent(player: Player): PlayerEvent(player), Cancellable {
+    private val handlerList = HandlerList()
+    private var isCancelled = false
 
-    override fun getHandlers(): HandlerList {
-        TODO("Not yet implemented")
-    }
+    override fun getHandlers() = handlerList
 
-    override fun isCancelled(): Boolean {
-        TODO("Not yet implemented")
-    }
+    override fun isCancelled() = isCancelled
 
     override fun setCancelled(cancel: Boolean) {
-        TODO("Not yet implemented")
+        isCancelled = cancel
     }
 
 }
