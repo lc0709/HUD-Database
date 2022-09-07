@@ -16,7 +16,7 @@ class UserListener: Listener {
 
     @EventHandler
     fun onPlayerJoin(e: PlayerJoinEvent) {
-        HUDManager.runHUDTask(e.player)
+
     }
 
     @EventHandler

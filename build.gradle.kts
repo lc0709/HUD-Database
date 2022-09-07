@@ -32,9 +32,6 @@ allprojects {
         mavenLocal()
         maven("https://repo.papermc.io/repository/maven-public/")
     }
-    tasks.jar{
-        destinationDir = File("C:\\Users\\3doll\\OneDrive\\바탕 화면\\server\\plugins")
-    }
     dependencies {
         implementation("com.zaxxer:HikariCP:4.0.3")
         implementation("io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT")
