@@ -2,6 +2,7 @@ package net.doiche.database.db
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
+import net.doiche.database.events.DataLoadEvent
 import net.doiche.hud.HUD
 import net.doiche.hud.managers.HUDManager
 import net.doiche.hud.managers.UserManager
@@ -25,6 +26,7 @@ object DBInitManager {
     //Listener
     fun playerDataInit(player:Player){
         if (!load(player)) firstInit(player)
+        plugin.server.pluginManager.callEvent(DataLoadEvent(player))
     }
 
     private fun hikariInit(): Boolean{
