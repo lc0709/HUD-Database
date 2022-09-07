@@ -48,7 +48,7 @@ object HUDManager {
                 }
 
                 if (count >= 40 && hud.getThirst() <= 0.0){ //갈증 ==0일 경우 2초마다 체력 2씩 담
-                    player.health -= 2
+                    player.damage(2.0)
                 }
                 //switchContext(SynchronizationContext.SYNC)
                 player.sendActionBar(hud.getComponent(player.isSwimming, player.remainingAir))
