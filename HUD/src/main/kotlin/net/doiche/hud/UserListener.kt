@@ -2,6 +2,7 @@ package net.doiche.hud
 
 import com.destroystokyo.paper.event.player.PlayerJumpEvent
 import net.doiche.hud.managers.HUDManager
+import net.doiche.hud.managers.UserManager
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.PlayerDeathEvent

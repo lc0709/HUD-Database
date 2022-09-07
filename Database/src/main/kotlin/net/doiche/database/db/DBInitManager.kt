@@ -3,8 +3,8 @@ package net.doiche.database.db
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import net.doiche.hud.HUD
-import net.doiche.hud.hudMap
-import net.doiche.hud.userMap
+import net.doiche.hud.managers.HUDManager
+import net.doiche.hud.managers.UserManager
 import org.bukkit.entity.Player
 import java.sql.Connection
 import java.sql.SQLException
@@ -89,7 +89,7 @@ object DBInitManager {
                     val set = state.executeQuery()
                     if (set.next()) {
                         id = set.getInt("id")
-                        userMap[uuid] = id
+                        UserManager.inputId(uuid,id)
                     }
                     else return false
                 }
@@ -97,11 +97,11 @@ object DBInitManager {
                     state.setString(1, id.toString())
                     val set = state.executeQuery()
                     if (set.next()) {
-                        hudMap[id] = HUD(
+                        HUDManager.inputHUD(id,HUD(
                             set.getDouble("thirst"),
                             set.getDouble("stamina"),
                             set.getDouble("temperature")
-                        )
+                        ))
                     }
                     else return false
                 }
