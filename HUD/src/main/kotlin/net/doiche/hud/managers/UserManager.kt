@@ -1,7 +1,6 @@
-package net.doiche.hud.tasks
+package net.doiche.hud.managers
 
 import net.doiche.hud.HUD
-import net.doiche.hud.hudMap
 import java.util.UUID
 
 object UserManager {

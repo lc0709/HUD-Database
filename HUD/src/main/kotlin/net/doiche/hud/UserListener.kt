@@ -1,7 +1,7 @@
 package net.doiche.hud
 
 import com.destroystokyo.paper.event.player.PlayerJumpEvent
-import net.doiche.hud.tasks.HUDManager
+import net.doiche.hud.managers.HUDManager
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.PlayerDeathEvent
@@ -10,7 +10,6 @@ import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerToggleSprintEvent
 import org.bukkit.inventory.meta.PotionMeta
 import org.bukkit.potion.PotionType
-import java.util.*
 
 class UserListener: Listener {
 

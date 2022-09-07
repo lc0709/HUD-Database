@@ -1,4 +1,4 @@
-package net.doiche.hud.tasks
+package net.doiche.hud.managers
 
 import net.doiche.hud.coroutine.SynchronizationContext
 import net.doiche.hud.coroutine.schedule
