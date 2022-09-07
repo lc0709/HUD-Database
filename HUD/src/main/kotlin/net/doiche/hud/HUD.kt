@@ -1,14 +1,26 @@
 package net.doiche.hud
 
 import net.kyori.adventure.text.Component
-import org.bukkit.GameMode
 import kotlin.math.ceil
 
 class HUD(
-    var thirst: Double,
-    var temperature: Double,
-    var stamina: Double
+    private var thirst: Double,
+    private var temperature: Double,
+    private var stamina: Double
 ) {
+    fun getThirst() = thirst
+    fun getTemperature() = temperature
+    fun getStamina() = stamina
+
+    fun setThirst(value: Double){
+        thirst = value
+    }
+    fun setTemperature(value: Double){
+        temperature = value
+    }
+    fun setStamina(value: Double){
+        stamina = value
+    }
 
     fun getComponent(isSwimming: Boolean, remainingAir: Int): Component {
 

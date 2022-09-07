@@ -12,6 +12,6 @@ class DBUserListener: Listener {
     }
     @EventHandler
     fun onPlayerQuit(e: PlayerQuitEvent){
-
+        DBManager.playerDataRemove(e.player)
     }
 }

@@ -14,7 +14,7 @@ object HUDManager {
     private val hudMap = HashMap<Int, HUD>()
 
     fun inputHUD(id: Int,hud: HUD) {hudMap[id]=hud}
-
+    fun getHud(id:Int) = hudMap[id]
     fun getHudMap() = hudMap
 
     fun runHUDTask(player:Player){
